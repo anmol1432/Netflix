@@ -1,0 +1,26 @@
+@mixin btn{
+    color: $font-color!important;
+    border-color: $brand-color!important;
+    padding: 6px 24px;
+    border: none;
+    transition: 0.5s;
+    background-color: $brand-color!important;
+    margin-left: 2rem;
+    outline: none;
+    border: none
+}
+
+@mixin  btn-transparent {
+    @include btn;
+    background-color: #000000a6!important;
+}
+
+@mixin  icon {
+    height: 20px;
+    width: 20px;
+    margin: 0px 5px;
+}
+
+@mixin card {
+    
+}

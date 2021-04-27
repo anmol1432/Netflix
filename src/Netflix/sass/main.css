@@ -1,0 +1,311 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+@media (min-width: 1400px) {
+  .bg-img {
+    place-items: center;
+    background-position: top;
+    background-image: linear-gradient(178deg, #00000063, #605c5c05) !important;
+    background-blend-mode: multiply;
+    filter: brightness(0.8);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    z-index: 0;
+  }
+
+  /*
+  -----------------------------|
+  | Navbar  section component  |
+  -----------------------------|
+  */
+  .navbar {
+    margin-top: -20px;
+    z-index: 1;
+    margin-left: 90px;
+  }
+
+  .bg-dark {
+    background-color: #343a4000 !important;
+  }
+
+  .navbar-brand > img {
+    margin-left: 18rem;
+    height: 100px;
+  }
+
+  .nav-container, .Nav-links {
+    margin-left: 3rem;
+  }
+
+  .search-icon {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 420px;
+    transition: 0.5s;
+    transform: scale(1.5, 1.5);
+  }
+  .search-icon:hover {
+    transform: scale(1.9, 1.9);
+  }
+  .search-icon:hover .form-nav {
+    background-color: #000000a6;
+  }
+
+  .form-nav {
+    background-color: #000000a6;
+    width: 30rem;
+    border: none;
+    outline: none;
+    text-align: start;
+  }
+  .form-nav:hover {
+    background-color: #0f0f0f;
+    color: #f1f1f1;
+  }
+  .form-nav::placeholder {
+    color: #f1f1f1 !important;
+  }
+
+  .create-account {
+    color: #f1f1f1 !important;
+    border-color: #ff0713 !important;
+    padding: 6px 24px;
+    border: none;
+    transition: 0.5s;
+    background-color: #ff0713 !important;
+    margin-left: 2rem;
+    outline: none;
+    border: none;
+  }
+  .create-account > .icon {
+    height: 20px;
+    width: 20px;
+    margin: 0px 5px;
+  }
+
+  .login {
+    color: #f1f1f1 !important;
+    border-color: #ff0713 !important;
+    padding: 6px 24px;
+    border: none;
+    transition: 0.5s;
+    background-color: #ff0713 !important;
+    margin-left: 2rem;
+    outline: none;
+    border: none;
+    background-color: #000000a6 !important;
+  }
+  .login:hover {
+    background-color: #ff0713 !important;
+  }
+
+  .navbar-dark .navbar-nav .nav-link {
+    color: #f1f1f1 !important;
+  }
+
+  /*
+  -----------------------------|
+  | Heading section component  |
+  -----------------------------|
+  */
+  .mid-section {
+    position: relative;
+    max-width: fit-content;
+    display: block;
+    margin: auto;
+  }
+  .mid-section > .Heading-h1 {
+    margin-top: 80px;
+    font-size: 3rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #ff0713;
+  }
+  .mid-section > .Heading-h2 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #f1f1f1;
+  }
+  .mid-section > .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .mid-section > .button-container > button {
+    color: #f1f1f1 !important;
+    border-color: #ff0713 !important;
+    padding: 6px 24px;
+    border: none;
+    transition: 0.5s;
+    background-color: #ff0713 !important;
+    margin-left: 2rem;
+    outline: none;
+    border: none;
+    letter-spacing: 0.5px;
+    padding: 10px 30px;
+  }
+
+  /*
+  -----------------------------|
+  | CardSection component  |
+  -----------------------------|
+  */
+  .card-section {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .card-section > .CARD {
+    z-index: 2;
+    /*
+    -----------------------------|
+    | Card component      |
+    -----------------------------|
+    */
+  }
+  .card-section > .CARD > .card {
+    border: 3px solid #ff0713;
+    border-radius: 10px;
+    width: 280px;
+    height: 350px;
+  }
+  .card-section > .CARD > .card > .card-img-top {
+    margin: 0px;
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    mix-blend-mode: darken;
+    filter: brightness(0.8);
+  }
+  .card-section > .CARD > .card > .card-body {
+    background-image: linear-gradient(360deg, #000000d9, transparent);
+    border-radius: 5px;
+    margin-top: 200px;
+  }
+  .card-section > .CARD > .card > .card-body > .card-text {
+    z-index: 3;
+    position: relative;
+  }
+  .card-section > .CARD > .card > .card-body > .card-text > p {
+    color: #f1f1f1;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif !important;
+  }
+
+  /*
+  -----------------------------|
+  | Footer component  |
+  -----------------------------|
+  */
+  .footer {
+    z-index: 2;
+    position: fixed;
+    bottom: 10px;
+    font-size: 1.1rem;
+  }
+  .footer > .pagefooter > .list {
+    list-style: none;
+    max-height: fit-content;
+    padding: 2px;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .footer > .pagefooter > .list > a {
+    color: #f1f1f1;
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+
+  /*
+  -----------------------------|
+  | Form component  |
+  -----------------------------|
+  */
+  .LoginSignIn {
+    position: relative !important;
+    z-index: 3;
+    width: 40%;
+    background-color: #000000e3;
+    border-radius: 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .LoginSignIn > main > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .MuiInputBase-input, .MuiInputLabel-root, .AccountCircle, .LockOpenIcon {
+    color: #f1f1f1 !important;
+  }
+
+  .MuiInputLabel-shrink {
+    color: #ff0713 !important;
+  }
+
+  .MuiInput-underline::before {
+    color: #f1f1f1 !important;
+    border-bottom: 2px solid #f1f1f1 !important;
+  }
+
+  .MuiInput-underline::after {
+    color: #ff0713 !important;
+    border-bottom: 2px solid #ff0713 !important;
+  }
+
+  .btn-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .directSignIn {
+    font-size: 1.6rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin: 5px;
+    background-color: #f1f1f1;
+  }
+
+  .loginHeading {
+    color: #f1f1f1 !important;
+  }
+  .loginHeading > .signup {
+    color: #ff0713;
+    text-decoration: none;
+    margin-left: 5px;
+    transition: ease-in 0.2s;
+    border-radius: 10px;
+  }
+  .loginHeading > .signup:hover {
+    border: 2px solid #ff0713;
+    padding: 5px;
+    margin-left: 5px;
+    background-color: #0f0f0f;
+    color: #f1f1f1;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
