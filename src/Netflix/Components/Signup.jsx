@@ -8,12 +8,11 @@ import Material_Input from './Material_Input';
 import db, { auth } from '../../firebase'
 
 
-
 function Signup() {
     const [input, setinput] = useState({
-        UserName: '',
-        Email: '',
-        Password: ''
+        UserName: null,
+        Email: null,
+        Password: null
     })
     const inputEvent = (event) => {
         let { name, value } = event.target;
@@ -23,16 +22,27 @@ function Signup() {
         })
     }
     const createUser = () => {
-        auth.createUserWithEmailAndPassword(input.Email, input.Password)
-            .then((userCredential) => {
-                let user = userCredential.user;
-                console.log(user);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, ' ', errorMessage);
-            })
+        if (input.Username != null || input.Email != null && input.Password != null) {
+            auth.createUserWithEmailAndPassword(input.Email, input.Password)
+                .then((userCredential) => {
+                    let user = userCredential.user;
+                    console.log(user);
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    if (errorCode == 'auth/weak-password') {
+                        alert('The password is too weak.');
+                    } else {
+                        alert(errorMessage);
+                    }
+                    console.log(error);
+                    console.log(errorCode, ' ', errorMessage);
+                })
+        }
+        else {
+            alert('Please make sure the input fields are not empty or email is valid')
+        }
     }
     return (
         <>

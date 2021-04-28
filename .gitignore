@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# the folders to ignore
+src/Netflix/firebase.js
+
 # testing
 /coverage
 

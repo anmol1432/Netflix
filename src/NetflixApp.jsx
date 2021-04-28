@@ -6,7 +6,7 @@ import SignIn from "./Netflix/Components/SignIn";
 import Signup from "./Netflix/Components/Signup";
 import Contact from "./Netflix/Components/Contact";
 import Footer from "./Netflix/Components/Footer";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect} from "react-router-dom";
 // css components
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./Netflix/sass/main.css"
