@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { createContext } from 'react'
 import ReactDOM from 'react-dom';
 import NetflixApp from './NetflixApp';
 import { BrowserRouter } from "react-router-dom";
-// css
+// css imports
 import './index.css';
 
 
@@ -14,4 +14,5 @@ ReactDOM.render(
   </>,
   document.getElementById('root')
 );
+
 

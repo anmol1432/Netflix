@@ -12,7 +12,7 @@ const Footer = () => {
                     <NavLink exact className="navbar-brand" to="/privacy">
                         <li>Privacy</li>
                     </NavLink>
-                    <NavLink exact className="navbar-brand" to="/About">
+                    <NavLink exact className="navbar-brand" to="/main">
                         <li>About</li>
                     </NavLink>
                 </ul>

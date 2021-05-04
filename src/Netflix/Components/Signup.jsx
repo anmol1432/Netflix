@@ -5,15 +5,20 @@ import { Person } from 'react-bootstrap-icons';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Material_Input from './Material_Input';
-import db, { auth } from '../../firebase'
+import { auth } from '../../firebase'
+import { useParams, useLocation, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 
 function Signup() {
+    // Hooks are start
     const [input, setinput] = useState({
         UserName: null,
         Email: null,
         Password: null
     })
+    const history = useHistory();
+    // handling input events
     const inputEvent = (event) => {
         let { name, value } = event.target;
         setinput({
@@ -21,19 +26,26 @@ function Signup() {
             [name]: value
         })
     }
+    // createuser with firebase sdk
     const createUser = () => {
         if (input.Username != null || input.Email != null && input.Password != null) {
             auth.createUserWithEmailAndPassword(input.Email, input.Password)
                 .then((userCredential) => {
                     let user = userCredential.user;
-                    console.log(user);
+                })
+                .then(() => {
+                    history.goBack()
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     if (errorCode == 'auth/weak-password') {
                         alert('The password is too weak.');
-                    } else {
+                    }
+                    if (errorCode == 'auth/invalid-email') {
+                        alert('invalid-email');
+                    }
+                    else {
                         alert(errorMessage);
                     }
                     console.log(error);
@@ -41,9 +53,10 @@ function Signup() {
                 })
         }
         else {
-            alert('Please make sure the input fields are not empty or email is valid')
+            alert('Please make sure the input fields are not empty or email is valid and password is strong')
         }
     }
+
     return (
         <>
             <div className="LoginSignIn mt-lg-4">
