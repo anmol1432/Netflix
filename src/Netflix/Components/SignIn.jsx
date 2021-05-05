@@ -1,26 +1,46 @@
 import React, { useState, useContext } from 'react'
-import { AuthContext } from "./../../NetflixApp";
 import Netflix from "../Assets/netflix.svg"
 import Button from "./Button";
 import Material_Input from './Material_Input';
-import { Google, Facebook } from 'react-bootstrap-icons';
+import { Google} from 'react-bootstrap-icons';
 import { NavLink } from "react-router-dom";
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import { auth } from '../../firebase'
-import { Redirect } from "react-router-dom";
-import { useParams, useLocation, useHistory } from "react-router-dom";
+import firebase from 'firebase';
 
 
+const googleSignIn = () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+    firebase.auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+            var credential = result.credential;
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            console.log(credential, 'cre ', ' token  ', token, 'user  ', user);
+            // ...
+        }).catch((error) => {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+        });
 
+}
 const SignIn = () => {
     // Hooks are start
     const [input, setinput] = useState({
         Email: null,
         Password: null
     })
-    const flag = useContext(AuthContext)
-    const history = useHistory()
     // handling input events
     const inputEvent = (event) => {
         let { name, value } = event.target;
@@ -29,31 +49,19 @@ const SignIn = () => {
             [name]: value
         })
     }
-    const signInreditrect = () => {
-        console.log('yooto')
-        if (flag) {
-            console.log('/main', flag)
-            history.goBack()
-
-        }
-        else {
-            console.log('/main')
-            history.push('/login')
-        }
-    }
-    const signIn = () => {
+    const signingIn = () => {
         if (input.Email != null && input.Password != null) {
             auth.signInWithEmailAndPassword(input.Email, input.Password)
                 .then((userCredential) => {
                     var user = userCredential.user;
                     console.log(user.uid, user.email)
-                    signInreditrect()
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     alert(errorMessage)
                 })
+
         }
         else {
             alert('Please make sure the input fields are not empty or email is valid')
@@ -87,11 +95,12 @@ const SignIn = () => {
                         <div className="btn-container ">
                             <Button
                                 name={<Google color="red" className="" />}
+                                onClick={googleSignIn}
                                 AddClass="btn btn-outline-light text-capitalize  directSignIn p-1"
                             />
                             <Button
                                 name="Sign in"
-                                onClick={signIn}
+                                onClick={signingIn}
                                 AddClass="btn btn-outline-light text-capitalize create-account px-4 mt-4 mb-4"
                             />
                         </div>

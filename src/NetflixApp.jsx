@@ -28,8 +28,6 @@ const NetflixApp = () => {
         }
 
     })
-    console.log(state, "Napp")
-
     const Routes = {
         Home: '/',
         Main: '/main',
@@ -48,21 +46,31 @@ const NetflixApp = () => {
                         <Heading />
                         <CardSection />
                     </Route>
-                    <Route exact path={Routes.login} render={() => <SignIn />}>
-                        <SignIn />
-                    </Route>
-                    <Route exact path={Routes.signup} component={<Signup />}>
-                        <Signup />
-                    </Route>
+
+                    {
+                        state ?
+                            <Route exact path={Routes.login} render={() => <Redirect to="/main" />}>
+                                <Redirect to="/main" />
+                            </Route>
+                            :
+                            <Route exact path={Routes.login} render={() => <SignIn />}>
+                                <SignIn />
+                            </Route>
+                    }
 
                     <Private_Route
                         exact
                         path={Routes.Main}
-                        component={<Main />}/>
+                        component={<Main />} />
+                    
+                    <Route exact path={Routes.signup} component={<Signup />}>
+                        <Signup />
+                    </Route>
 
                     <Route exact path={Routes.contact} component={<Contact />}>
                         <Contact />
                     </Route>
+
                     <Redirect to="/" />
                 </Switch>
                 <Footer />

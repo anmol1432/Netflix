@@ -7,7 +7,6 @@ import { useParams, useLocation, useHistory } from "react-router-dom";
 export default function Private_Route({ component: Component, ...rest }) {
     const flag = useContext(AuthContext)
     const history = useHistory();
-    console.log(flag, 'hi')
     return (
         <Route
             {...rest}

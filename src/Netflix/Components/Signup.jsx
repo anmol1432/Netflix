@@ -6,8 +6,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Material_Input from './Material_Input';
 import { auth } from '../../firebase'
-import { useParams, useLocation, useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 
 
 function Signup() {
@@ -34,7 +34,7 @@ function Signup() {
                     let user = userCredential.user;
                 })
                 .then(() => {
-                    history.goBack()
+                    return history.goBack()
                 })
                 .catch((error) => {
                     const errorCode = error.code;
