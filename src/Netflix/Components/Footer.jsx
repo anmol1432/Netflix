@@ -9,7 +9,7 @@ const Footer = () => {
                     <NavLink exact className="navbar-brand" to="/contact">
                         <li>contact</li>
                     </NavLink>
-                    <NavLink exact className="navbar-brand" to="/privacy">
+                    <NavLink exact className="navbar-brand" to="/login">
                         <li>Privacy</li>
                     </NavLink>
                     <NavLink exact className="navbar-brand" to="/main">

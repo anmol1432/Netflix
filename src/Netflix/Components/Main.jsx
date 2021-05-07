@@ -3,7 +3,8 @@ import React from 'react'
 function Main() {
     return (
         <>
-            <h1 className="text-capitalize Heading-h1">Unlimited movies, Tv shows, and more</h1>
+            cjdhusdislkkxxkskl
+            <h1 className="text-capitalize mid-section Heading-h1 text-danger">Unlimited movies, Tv shows, and more</h1>
         </>
     )
 }

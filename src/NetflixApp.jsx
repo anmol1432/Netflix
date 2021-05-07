@@ -46,31 +46,34 @@ const NetflixApp = () => {
                         <Heading />
                         <CardSection />
                     </Route>
-
+                    {/* show login and signup page only when user is not loged in if loged in then redirect to "/" home page */}
                     {
                         state ?
-                            <Route exact path={Routes.login} render={() => <Redirect to="/main" />}>
-                                <Redirect to="/main" />
+                            <Route exact path={Routes.login} render={() => <Redirect to="/main" />} />
+                            :
+                            <>
+                                <Route exact path={Routes.login} render={() => <SignIn />}>
+                                    <SignIn />
+                                </Route>
+                                <Route exact path={Routes.signup} component={<Signup />}>
+                                    <Signup />
+                                </Route>
+                            </>
+
+                    }
+                    {/* if they want to acess main page and they are not loged in then redirect to login*/}
+                    {
+                        state ?
+                            <Route exact path={Routes.Main} render={() => <Main />}>
+                                <Main />
                             </Route>
                             :
-                            <Route exact path={Routes.login} render={() => <SignIn />}>
-                                <SignIn />
-                            </Route>
+                            <Route exact path={Routes.Main} render={() => <Redirect to="/login" />} />
                     }
-
-                    <Private_Route
-                        exact
-                        path={Routes.Main}
-                        component={<Main />} />
-                    
-                    <Route exact path={Routes.signup} component={<Signup />}>
-                        <Signup />
-                    </Route>
 
                     <Route exact path={Routes.contact} component={<Contact />}>
                         <Contact />
                     </Route>
-
                     <Redirect to="/" />
                 </Switch>
                 <Footer />

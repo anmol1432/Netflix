@@ -17,7 +17,7 @@
     background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0px;
     z-index: 0;
 }
@@ -29,25 +29,35 @@
 .navbar{
  margin-top: -20px;
  z-index: 1;
- margin-left: 90px;
+width: 70%;
+display: block;
+margin: auto;
 }
 .bg-dark {
     background-color: #343a4000!important;
 }
-.navbar-brand > img{
-    margin-left: 18rem;
-    height: 100px;
+.navbar-brand > img{   
+    height: 120px;
 }
 .nav-container, .Nav-links{
     margin-left:3rem;
 }
-
+.Search-btn{
+   
+    color: #f1f1f1 !important;
+    border-color: #ff0713 !important;
+    border: none;
+    transition: 0.5s;
+    background-color: #ff0713 !important;
+    outline: none;
+    border: none;
+}
 .search-icon{
-position: absolute;
-margin-top: 10px;
-margin-left: 420px;
-transition: 0.5s;
-transform:scale(1.5,1.5);
+    position: relative;
+    transition: 0.5s;
+    transform: scale(1.5, 1.5);
+    margin-right: 10px;
+    fill: antiquewhite;
   &:hover{
     transform:scale(1.9,1.9);
     .form-nav{
@@ -62,6 +72,8 @@ transform:scale(1.5,1.5);
     border: none;
     outline: none;
     text-align: start;
+    margin-left: 20px;
+    margin-right: 20px;
     &:hover{
     background-color: $bg-color;
     color:$font-color;
@@ -244,6 +256,12 @@ color:$font-color!important;
     border-radius: 50%;
     margin: 5px;
     background-color: $font-color;
+    transition: 0.5s;
+}
+.directSignIn:hover{
+    background-color:transparent;
+    border-radius: 50%;
+    transform: scale(1.2,1.2);
 }
 
 .loginHeading{
@@ -253,15 +271,20 @@ color:$font-color!important;
     text-decoration: none;
     margin-left: 5px;
     transition: ease-in 0.2s;
-    border-radius: 10px;
     }
     &>.signup:hover{
-    border:2px solid $brand-color;
+    border-bottom:2px solid $brand-color;
     padding: 5px;
     margin-left: 5px;
-    background-color: $bg-color;
     color: $font-color;
     }
 }
+/*
+-----------------------------|
+| Main component             |
+-----------------------------|
+*/
+
+
 }
 
