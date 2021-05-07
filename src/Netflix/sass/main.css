@@ -28,6 +28,8 @@
   -----------------------------|
   */
   .navbar {
+    position: relative;
+    top: -30px;
     margin-top: -20px;
     z-index: 1;
     width: 70%;
@@ -137,7 +139,7 @@
     margin: auto;
   }
   .mid-section > .Heading-h1 {
-    margin-top: 80px;
+    margin-top: 50px;
     font-size: 3rem;
     letter-spacing: 1px;
     font-weight: 700;
