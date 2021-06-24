@@ -1,5 +1,6 @@
 @import "_var";
 @import "_mixin";
+@import "_mobile";
 
 *{
     margin: 0px;
@@ -8,7 +9,7 @@
     font-family:$font-fmaily-heading;
 }
 @media (min-width:1400px) {
-.bg-img{
+    .bg-img{
     place-items: center;
     background-position: top;
     background-image: linear-gradient(178deg , #00000063, #605c5c05)!important;
@@ -26,26 +27,30 @@
 | Navbar  section component  |
 -----------------------------|
 */
+.Navbar-container{
+    display: block;
+    margin-left: 8%;
+}
 .navbar{
 position: relative;
 top: -30px;
-margin-top: -20px;
- z-index: 1;
-width: 70%;
+z-index: 1;
+width: 90%;
 display: block;
-margin: auto;
+margin: auto!important;
 }
 .bg-dark {
     background-color: #343a4000!important;
 }
 .navbar-brand > img{   
     height: 120px;
+    margin-left: 100px;
+    margin-right: 0px;
 }
 .nav-container, .Nav-links{
     margin-left:3rem;
 }
 .Search-btn{
-   
     color: #f1f1f1 !important;
     border-color: #ff0713 !important;
     border: none;
@@ -60,7 +65,7 @@ margin: auto;
     transform: scale(1.5, 1.5);
     margin-right: 10px;
     fill: antiquewhite;
-  &:hover{
+    &:hover{
     transform:scale(1.9,1.9);
     .form-nav{
     background-color: #000000a6;
@@ -74,31 +79,31 @@ margin: auto;
     border: none;
     outline: none;
     text-align: start;
-    margin-left: 20px;
+    margin-left: 70px;
     margin-right: 20px;
     &:hover{
-    background-color: $bg-color;
+        background-color: $bg-color;
     color:$font-color;
-    }
-    &::placeholder{
+}
+&::placeholder{
     color: $font-color!important;
-    }
+}
 }
 .create-account {
-   @include btn;
-   & >.icon{
+    @include btn;
+    & >.icon{
        @include icon;
-   }
+    }
 }
 
 .login{
     @include btn-transparent;
     &:hover{
-    background-color: $brand-color!important;
+        background-color: $brand-color!important;
     }
 }
 .navbar-dark .navbar-nav .nav-link {
-     color:$font-color!important;
+    color:$font-color!important;
 }
 /*
 -----------------------------|
@@ -139,21 +144,26 @@ margin: auto;
 | CardSection component  |
 -----------------------------|
 */
+.mainCardsection{margin-top: 30px; width: 100vw;}
+
 .card-section{
-    margin-top: 40px;
+    margin: 0px;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
+    flex-wrap: nowrap;
+    width: 100vw;
+    position: relative;
+    z-index: 4;
+    overflow-x: scroll;
+    overflow-y: hidden;
+/*
+    -----------------------------|
+    | Card component      |
+    -----------------------------|
+*/
     & >.CARD{
     z-index: 2;
-/*
------------------------------|
-| Card component      |
------------------------------|
-*/
+    transition: all ease-in 0.3s;
     & >.card{
-        border: 3px solid $brand-color;
         border-radius: 10px;
         width: 280px;
         height: 350px; 
@@ -161,9 +171,6 @@ margin: auto;
             margin: 0px;
             height: 100%;
             position: absolute;
-            border-radius: 10px;
-            mix-blend-mode: darken;
-            filter: brightness(0.8);
            }
         &>.card-body{
         background-image: linear-gradient(360deg, #000000d9, transparent);
@@ -171,6 +178,8 @@ margin: auto;
         margin-top: 200px
         }
         & >.card-body >.card-text{
+            top: -200px;
+            left: 190px;
             z-index:3;
             position: relative;
         }
@@ -183,6 +192,26 @@ margin: auto;
         }   
     }
  }
+ .CARD:hover{
+     transform: scale(0.9,0.9);
+     margin: 0px 5px;
+ }
+ .MuiBox-root{
+    border-radius: 50px;
+    background-color: hsl(36deg 9% 11%);
+    filter: drop-shadow(2px 4px 6px black);
+    padding: 0px;
+ }
+.MuiCircularProgress-colorPrimary {
+    color: #ff0713!important;
+    width: 60px!important;
+    height: 60px!important;
+    z-index: 5;
+}
+.MuiTypography-colorTextSecondary {
+    font-weight: 900!important;
+    color: rgb(241 241 241)!important;
+}
 /*
 -----------------------------|
 | Footer component  |
@@ -190,8 +219,10 @@ margin: auto;
 */
 .footer{
     z-index: 2;
-    position: fixed;
-    bottom: 10px;
+    margin-top: 20px;
+    position:fixed;
+    bottom: 10px!important;
+    left: 10px;
     font-size: 1.1rem;
     &>.pagefooter>.list {
         list-style: none;
@@ -286,7 +317,30 @@ color:$font-color!important;
 | Main component             |
 -----------------------------|
 */
+.MainBox{
+    background-color: #000000a6;
+    position: absolute;
+    margin-top: 10px;
+}
 
 
 }
 
+// for all view size
+.card-section::-webkit-scrollbar{
+background-color:$font-color;
+height:8px;
+width: 20px!important; 
+border-radius:10px;
+position: relative;
+z-index:4;
+}
+.card-section::-webkit-scrollbar-thumb{
+  background-color:$brand-color;  
+}
+.card-section::-webkit-scrollbar-track{
+width: 20px!important;  
+}
+
+// C:\Users\hp\Contacts\Desktop\react\netflix_app\src\Netflix\sass
+// sass --watch main.scss:main.css

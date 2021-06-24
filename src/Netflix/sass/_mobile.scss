@@ -1,10 +1,48 @@
 //  For mobile and tablets 📴📞
 
-@media (max-width: 768px) {
+@media (max-width:420px) {
 .bd-placeholder-img-lg {
     font-size: 3.5rem;
 }
 .bg-img{
-    display: none;
+    display: none !important;
 }
+.Search-btn{
+    color: #f1f1f1 !important;
+    border-color: #ff0713 !important;
+    border: none;
+    transition: 0.5s;
+    background-color: #ff0713 !important;
+    outline: none;
+    border: none;
+}
+.search-icon{
+    position: relative;
+    transition: 0.5s;
+    transform: scale(1.5, 1.5);
+    margin-right: 10px;
+    fill: antiquewhite;
+  &:hover{
+    transform:scale(1.9,1.9);
+    .form-nav{
+    background-color: #000000a6;
+    } 
+  }
+}
+/*
+-----------------------------|
+| CardSection component  |
+-----------------------------|
+*/
+.mainCardsection{ width: 100vw;}
+.card-section{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100vw;
+    position: relative;
+    z-index: 4;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
 }

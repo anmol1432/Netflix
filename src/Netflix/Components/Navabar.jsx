@@ -13,73 +13,47 @@ const Navabar = () => {
     const flag = useContext(AuthContext)
     return (
         <>
-            <img src={mh} className="bg-img" alt="" />
-            {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <NavLink exact className="navbar-brand" to="/">
-                    <img src={Netflix} alt="" />
-                </NavLink>
-                <div className="nav-container d-flex">
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav">
-                            <input className="form-control form-nav mr-lg-5" type="search" placeholder="Search movies and episodes" aria-label="Search" />
-                            <Search color="red" className="search-icon icon" />
-                        </ul>
-                        <DropDown />
-                        <NavLink exact className="" to="/login">
-                            {flag ?
-                                <Button
-                                    name="signout"
-                                    onClick={() => auth.signOut()}
-                                    AddClass="btn btn-outline-danger text-capitalize login px-4"
-                                /> : <Button
-                                    name="login"
-                                    AddClass="btn btn-outline-danger text-capitalize login px-4"
-                                />
-                            }
+            <span className="bg">
+                <img src={mh} className="bg-img" id="bg-img" alt="" />
+            </span>
+            <div className="Navbar-container">
+                <nav className="navbar navbar-expand-lg  navbar-dark bg-dark ">
+                    <div className="container-fluid">
+                        <NavLink exact className="navbar-brand" to="/">
+                            <img src={Netflix} alt="" />
                         </NavLink>
-                    </div>
-                </div>
-            </nav> */}
-            {/* ========================================================================== */}
-            <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
-                <div class="container-fluid">
-                    <NavLink exact className="navbar-brand" to="/">
-                        <img src={Netflix} alt="" />
-                    </NavLink>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <form class="d-flex">
-                                <input className="form-control form-nav mr-lg-5" type="search" placeholder="Search movies and episodes" aria-label="Search" />
-                                <button class="btn btn-danger Search-btn" type="submit">
-                                    <Search color="red" className="search-icon icon" />Search
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                <form className="d-flex">
+                                    <input className="form-control form-nav mr-lg-5" type="search" placeholder="Search movies and episodes" aria-label="Search" />
+                                    <button className="btn btn-danger Search-btn" type="submit">
+                                        <Search color="red" className="search-icon icon" />Search
                                 </button>
-                            </form>
-                            <DropDown />
+                                </form>
+                                <DropDown />
 
-                            {flag ?
-                                <Button
-                                    name="signout"
-                                    onClick={() => auth.signOut()}
-                                    AddClass="btn btn-outline-danger text-capitalize login px-4"
-                                /> :
-                                <NavLink exact className="" to="/login">
+                                {flag ?
                                     <Button
-                                        name="login"
+                                        name="signout"
+                                        onClick={() => auth.signOut()}
                                         AddClass="btn btn-outline-danger text-capitalize login px-4"
-                                    />
-                                </NavLink>
-                            }
+                                    />:
+                                    <NavLink exact className="" to="/login">
+                                        <Button
+                                            name="login"
+                                            AddClass="btn btn-outline-danger text-capitalize login px-4"
+                                        />
+                                    </NavLink>
+                                }
 
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
         </>
     )
 }
