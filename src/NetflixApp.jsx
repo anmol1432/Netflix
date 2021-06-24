@@ -6,10 +6,12 @@ import SignIn from "./Netflix/Components/SignIn";
 import Signup from "./Netflix/Components/Signup";
 import Contact from "./Netflix/Components/Contact";
 import Footer from "./Netflix/Components/Footer";
+import Privacy from "./Netflix/Components/HelpingComponents/Privacy";
+import About from "./Netflix/Components/HelpingComponents/About";
 import Main from "./Netflix/Components/Main";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { auth } from './firebase';
-import Private_Route from "./Netflix/Components/Private_Route";
+
 // css components
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./Netflix/sass/main.css"
@@ -18,7 +20,7 @@ import "./Netflix/sass/main.css"
 const AuthContext = createContext()
 
 const NetflixApp = () => {
-    const [state, setstate] = useState(false)
+    const [state, setstate] = useState()
     auth.onAuthStateChanged((user) => {
         if (user) {
             return setstate(true)
@@ -28,6 +30,7 @@ const NetflixApp = () => {
         }
 
     })
+    console.log(state);
     const Routes = {
         Home: '/',
         Main: '/main',
@@ -46,6 +49,8 @@ const NetflixApp = () => {
                         <Heading />
                         <CardSection />
                     </Route>
+                    <Route exact path={Routes.privacy} render={() => <Privacy />}></Route>
+                    <Route exact path={Routes.About} render={() => <About />}></Route>
                     {/* show login page only when user is not loged in if loged in then redirect to "/" home page */}
                     {
                         state ?
@@ -55,6 +60,7 @@ const NetflixApp = () => {
                                 <SignIn />
                             </Route>
                     }
+                    {/* show signUp page only when user is not loged in if they are loged in then redirect to "/" home page */}
                     {
                         state ?
                             <Route exact path={Routes.signup} render={() => <Redirect to="/" />} />
@@ -66,21 +72,15 @@ const NetflixApp = () => {
                     {/* if they want to acess main page and they are not loged in then redirect to login*/}
                     {
                         state ?
-                            <Route exact path={Routes.Main} render={() => <Main />}>
+                            <Route exact path={Routes.Main} component={<Main />}>
                                 <Main />
                             </Route>
                             :
-                            <Route exact path={Routes.Main} render={() => <Redirect to="/login" />} />
+                            <Redirect to="/login" />
                     }
-
-                    {/* <Route exact path={Routes.signup} component={<Signup />}>
-                        <Signup />
-                    </Route> */}
-
                     <Route exact path={Routes.contact} component={<Contact />}>
                         <Contact />
                     </Route>
-
                     <Redirect to="/" />
                 </Switch>
                 <Footer />
