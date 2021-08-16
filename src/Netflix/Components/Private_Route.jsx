@@ -1,21 +1,21 @@
 import React, { useContext } from "react"
-import { Route, Redirect } from "react-router-dom"
+import { Route, Redirect, useHistory } from "react-router-dom"
 import { AuthContext } from "./../../NetflixApp";
 
+export const PrivateRoute = ({ path, Component }) => {
+    // const authentication = true
+    const history = useHistory()
+    const authentication = useContext(AuthContext)
+    return (<Route
+        exact
+        path={path}
+        render={() => {
+            if (authentication) {
+                return <Component />
+            }
+            history.push('/login')
+        }}
+    />)
+};
 
-
-export default function Private_Route(props) {
-    const flag = useContext(AuthContext)
-    return (
-        <Route
-            render={() => {
-                if (flag) {
-                    return (props.comp)
-                }
-                else {
-                    return <Redirect to="/login" />
-                }
-            }}
-        ></Route>
-    )
-}
+export default PrivateRoute;

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import Netflix from "../Assets/netflix.svg"
 import Button from "./Button";
 import Material_Input from './Material_Input';
-import { Google} from 'react-bootstrap-icons';
+import { Google } from 'react-bootstrap-icons';
 import { NavLink } from "react-router-dom";
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
@@ -21,7 +21,6 @@ const googleSignIn = () => {
             var token = credential.accessToken;
             // The signed-in user info.
             var user = result.user;
-            console.log(credential, 'cre ', ' token  ', token, 'user  ', user);
             // ...
         }).catch((error) => {
             // Handle Errors here.
@@ -54,7 +53,6 @@ const SignIn = () => {
             auth.signInWithEmailAndPassword(input.Email, input.Password)
                 .then((userCredential) => {
                     var user = userCredential.user;
-                    console.log(user.uid, user.email)
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -74,7 +72,7 @@ const SignIn = () => {
                     <form className=" m-auto text-center" onSubmit={(event) => event.preventDefault()}>
                         <img className="mb-0" src={Netflix} alt="" width="300" height="160" />
                         <h1 className="h3 mb-5 fw-normal loginHeading text-capitalize">New Here ?
-                             <NavLink exact className="signup" to="/signup">
+                            <NavLink exact className="signup" to="/signup">
                                 signup
                             </NavLink>
                         </h1>

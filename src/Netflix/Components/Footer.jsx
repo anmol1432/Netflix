@@ -6,7 +6,7 @@ const Footer = () => {
         <div className=" footer">
             <footer className="pagefooter font-small blue">
                 <ul className="list text-capitalize">
-                    <NavLink exact className="navbar-brand" to="/main">
+                    <NavLink exact className="navbar-brand" to="/contact">
                         <li>contact</li>
                     </NavLink>
                     <NavLink exact className="navbar-brand" to="/privacy">

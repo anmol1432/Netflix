@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext, useEffect } from 'react'
 import Navbar from "./Netflix/Components/Navabar";
 import Heading from "./Netflix/Components/Heading";
 import CardSection from "./Netflix/Components/CardSection";
@@ -9,8 +9,9 @@ import Footer from "./Netflix/Components/Footer";
 import Privacy from "./Netflix/Components/HelpingComponents/Privacy";
 import About from "./Netflix/Components/HelpingComponents/About";
 import Main from "./Netflix/Components/Main";
-import { Route, Switch, Redirect } from "react-router-dom";
-import { auth } from './firebase';
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import firebase from 'firebase';
+import PrivateRoute from "../src/Netflix/Components/Private_Route";
 
 // css components
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -20,17 +21,21 @@ import "./Netflix/sass/main.css"
 const AuthContext = createContext()
 
 const NetflixApp = () => {
-    const [state, setstate] = useState()
-    auth.onAuthStateChanged((user) => {
+    const [userLoged, setuserLoged] = useState(false)
+    firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-            return setstate(true)
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+            var uid = user.uid;
+            setuserLoged(true)
+            // ...
+        } else {
+            // User is signed out
+            // ...
+            setuserLoged(false)
         }
-        else {
-            return setstate(false)
-        }
+    });
 
-    })
-    console.log(state);
     const Routes = {
         Home: '/',
         Main: '/main',
@@ -40,47 +45,22 @@ const NetflixApp = () => {
         privacy: '/privacy',
         About: '/About',
     }
+    let history = useHistory()
     return (
         <>
-            <AuthContext.Provider value={state}>
+            <AuthContext.Provider value={userLoged}>
                 <Navbar />
                 <Switch>
-                    <Route exact path={Routes.Home} render={() => <Heading />}>
+                    <Route exact path={Routes.Home} >
                         <Heading />
                         <CardSection />
                     </Route>
-                    <Route exact path={Routes.privacy} render={() => <Privacy />}></Route>
-                    <Route exact path={Routes.About} render={() => <About />}></Route>
-                    {/* show login page only when user is not loged in if loged in then redirect to "/" home page */}
-                    {
-                        state ?
-                            <Route exact path={Routes.login} render={() => <Redirect to="/" />} />
-                            :
-                            <Route exact path={Routes.login} render={() => <SignIn />}>
-                                <SignIn />
-                            </Route>
-                    }
-                    {/* show signUp page only when user is not loged in if they are loged in then redirect to "/" home page */}
-                    {
-                        state ?
-                            <Route exact path={Routes.signup} render={() => <Redirect to="/" />} />
-                            :
-                            <Route exact path={Routes.signup} component={<Signup />}>
-                                <Signup />
-                            </Route>
-                    }
-                    {/* if they want to acess main page and they are not loged in then redirect to login*/}
-                    {
-                        state ?
-                            <Route exact path={Routes.Main} component={<Main />}>
-                                <Main />
-                            </Route>
-                            :
-                            <Redirect to="/login" />
-                    }
-                    <Route exact path={Routes.contact} component={<Contact />}>
-                        <Contact />
-                    </Route>
+                    <Route exact path={Routes.privacy} render={() => <Privacy />} />
+                    <Route exact path={Routes.login} render={() => userLoged ? history.push('/') : <SignIn />} />
+                    <Route exact path={Routes.signup} render={() => userLoged ? history.push('/') : <Signup />} />
+                    <Route exact path={Routes.About} render={() => <About />} />
+                    <Route exact path={Routes.contact} render={() => <Contact />} />
+                    <PrivateRoute path={Routes.Main} Component={Main} />
                     <Redirect to="/" />
                 </Switch>
                 <Footer />
@@ -88,6 +68,7 @@ const NetflixApp = () => {
         </>
     );
 }
+
 
 export default NetflixApp;
 export { AuthContext }

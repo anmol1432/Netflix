@@ -8,16 +8,12 @@ const axios = require('axios').default;
 const CardSection = () => {
     // this link is come from redux store
     const link = useSelector(state => state.changeCardLink)
-    console.log(link);
-    function getdata() {
-        const req = axios.get(link)
-            .then((response) => {
-                let res = response.data.results;
-                return res
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+    const getdata = () => {
+        let req = axios.get(link).then((response) => {
+            return response.data.results
+        }).catch((error) => {
+            console.log(error)
+        })
         return req
     }
 
@@ -30,10 +26,10 @@ const CardSection = () => {
                             ({ data, err, isLoading }) => {
                                 if (isLoading) return (
                                     <>
-                                        <Card /><Card />
-                                        <Card /><Card />
-                                        <Card /><Card />
-                                        <Card /><Card />
+                                        <Card
+                                            img={''}
+                                            vote={90} />
+
                                     </>
                                 )
                                 if (err) return err
